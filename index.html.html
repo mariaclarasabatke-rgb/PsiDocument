@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PsiDocumento | Trilha Didática sobre Parecer Psicológico</title>
+<style>
+:root{
+  --ink:#2f173d;--muted:#735f80;--purple:#7c3aed;--purple2:#a855f7;--pink:#ec4899;--rose:#fff1f8;--lilac:#f4e8ff;--line:#eadcf5;--green:#16a34a;--red:#dc2626;--amber:#f59e0b;--shadow:0 18px 50px rgba(124,58,237,.14);--r:28px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:radial-gradient(circle at 8% 6%,#fbcfe8,transparent 32%),radial-gradient(circle at 92% 10%,#ddd6fe,transparent 34%),linear-gradient(180deg,#fff8fc,#fbf6ff 55%,#fff)}
+button,input{font:inherit}
+button{border:0;cursor:pointer}
+.hidden{display:none!important}
+.start{min-height:100vh;display:grid;place-items:center;padding:24px;overflow:hidden;position:relative}
+.blob{position:absolute;border-radius:999px;filter:blur(30px);opacity:.5;animation:float 8s ease-in-out infinite}
+.b1{width:360px;height:360px;background:#f0abfc;top:-80px;left:-90px}
+.b2{width:340px;height:340px;background:#c4b5fd;right:-80px;top:60px;animation-delay:1.2s}
+@keyframes float{50%{transform:translateY(-24px) translateX(10px)}}
+.start-card{width:min(1140px,100%);display:grid;grid-template-columns:1fr 1fr;background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.85);border-radius:42px;overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(18px);z-index:2}
+.left{padding:54px}
+.right{padding:34px;background:linear-gradient(145deg,#7c3aed,#a855f7 45%,#ec4899);color:#fff;display:flex;flex-direction:column;justify-content:space-between;min-height:590px}
+.badge{display:inline-flex;gap:8px;align-items:center;background:var(--lilac);color:var(--purple);padding:10px 14px;border-radius:999px;border:1px solid #e9d5ff;font-weight:950;font-size:14px}
+h1{font-size:clamp(42px,6vw,82px);line-height:.92;letter-spacing:-3px;margin:24px 0 18px}
+h2{font-size:clamp(30px,4.2vw,52px);line-height:1.04;letter-spacing:-1.4px;margin:12px 0 14px}
+h3{font-size:27px;margin:0 0 12px}
+p{line-height:1.7}
+.lead{font-size:18px;color:var(--muted)}
+.right .lead{color:rgba(255,255,255,.86)}
+input{border:1px solid var(--line);border-radius:18px;padding:16px 18px;outline:none;min-width:min(420px,100%);color:var(--ink)}
+input:focus{border-color:#c084fc;box-shadow:0 0 0 4px #f3e8ff}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{border-radius:18px;font-weight:1000;padding:15px 19px}
+.primary{background:linear-gradient(135deg,var(--purple),var(--pink));color:white;box-shadow:0 14px 30px rgba(236,72,153,.22)}
+.soft{background:white;color:var(--purple);border:1px solid var(--line)}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+.link-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font-size:13px;font-weight:900;color:var(--purple);margin-top:12px}
+
+/* mascote */
+.doc-mascot{width:235px;height:295px;background:linear-gradient(145deg,#fff,#fff0f7);border:5px solid #f9a8d4;border-radius:30px 30px 36px 36px;position:relative;box-shadow:0 24px 48px rgba(236,72,153,.28);animation:bob 3s ease-in-out infinite;margin:auto}
+.doc-mascot:before{content:"";position:absolute;right:-5px;top:-5px;border-top:58px solid #f9a8d4;border-left:58px solid transparent;border-radius:0 24px 0 12px}
+.bow{position:absolute;top:-42px;left:50%;transform:translateX(-50%) rotate(-3deg);width:118px;height:58px;z-index:5}
+.bow:before,.bow:after{content:"";position:absolute;top:9px;width:54px;height:42px;background:linear-gradient(145deg,#ff8fc7,#ec4899);border:4px solid #ffd6ea;border-radius:58% 42% 55% 45%;box-shadow:0 10px 18px rgba(236,72,153,.22)}
+.bow:before{left:0;transform:rotate(-18deg)}
+.bow:after{right:0;transform:rotate(18deg)}
+.bow i{position:absolute;left:47px;top:16px;width:25px;height:25px;background:#ffd6ea;border:4px solid #ec4899;border-radius:999px;z-index:3}
+.doc-eye{position:absolute;width:20px;height:27px;background:#321640;border-radius:999px;top:118px}
+.doc-eye:after{content:"";position:absolute;width:6px;height:8px;background:white;border-radius:999px;top:5px;left:5px}
+.doc-eye.l{left:69px}.doc-eye.r{right:69px}
+.doc-mouth{position:absolute;width:48px;height:24px;border-bottom:5px solid #321640;border-radius:0 0 50px 50px;top:158px;left:88px}
+.doc-cheek{position:absolute;width:31px;height:17px;background:#f9a8d4;border-radius:999px;top:150px}
+.doc-cheek.l{left:35px}.doc-cheek.r{right:35px}
+.doc-lines{position:absolute;left:48px;right:48px;bottom:50px;display:grid;gap:10px}
+.doc-lines i{height:7px;background:#fbcfe8;border-radius:999px}
+.doc-heart{position:absolute;left:104px;top:194px;color:#ec4899;font-size:24px}
+@keyframes bob{50%{transform:translateY(-10px) rotate(1deg)}}
+.speech{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);padding:20px;border-radius:26px}
+.speech strong{font-size:21px}
+.authors{font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.6}
+.authors strong{color:white}
+
+.app{display:none}
+header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.top{max-width:1220px;margin:auto;padding:14px 22px;display:flex;gap:18px;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center;font-weight:1000}
+.logo{width:45px;height:45px;border-radius:17px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:white}
+.brand small{display:block;color:var(--muted);font-size:12px}
+.nav{display:flex;gap:8px;overflow:auto}
+.nav button{background:transparent;color:var(--muted);padding:10px 13px;border-radius:999px;font-weight:950;white-space:nowrap}
+.nav button.active{background:var(--lilac);color:var(--purple)}
+.user{background:white;border:1px solid var(--line);border-radius:999px;padding:8px 11px;color:var(--muted);font-size:13px;white-space:nowrap}
+main{max-width:1220px;margin:auto;padding:32px 22px 72px}
+.screen{display:none;animation:fade .25s ease}
+.screen.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.panel{background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:18px}
+.two{grid-template-columns:repeat(2,1fr)}
+.three{grid-template-columns:repeat(3,1fr)}
+.mini{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,#fff,#fff1f8);border:1px solid var(--line);border-radius:24px;padding:16px}
+.mini-doc{width:70px;height:84px;border:3px solid #f9a8d4;background:linear-gradient(145deg,#fff,#fff0f7);border-radius:13px;position:relative;flex:0 0 auto}
+.mini-doc:before{content:"";position:absolute;right:-3px;top:-3px;border-top:20px solid #f9a8d4;border-left:20px solid transparent}
+.mini-bow{position:absolute;top:-17px;left:13px;width:45px;height:20px}
+.mini-bow:before,.mini-bow:after{content:"";position:absolute;width:21px;height:17px;background:#ec4899;border:2px solid #ffd6ea;border-radius:50%}
+.mini-bow:before{left:0;transform:rotate(-18deg)}.mini-bow:after{right:0;transform:rotate(18deg)}
+.mini-bow i{position:absolute;left:18px;top:5px;width:9px;height:9px;background:#ffd6ea;border-radius:50%;z-index:2}
+.mini-doc em:before{content:"";position:absolute;width:7px;height:9px;background:#30163c;border-radius:999px;left:20px;top:36px;box-shadow:23px 0 0 #30163c}
+.mini-doc em:after{content:"";position:absolute;width:22px;height:10px;border-bottom:3px solid #30163c;border-radius:0 0 20px 20px;left:23px;top:50px}
+.progress-block{margin-top:20px}.phead{display:flex;justify-content:space-between;color:var(--muted);font-weight:900;font-size:14px;margin-bottom:10px}.progress{height:16px;background:#f3e8ff;border:1px solid #eadcf7;border-radius:999px;overflow:hidden}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--pink));transition:.4s}
+.lesson-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:22px;margin-top:24px}
+.lesson-list{display:grid;gap:11px}
+.lesson-btn{text-align:left;background:white;border:1px solid var(--line);border-radius:21px;padding:14px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+.lesson-btn.active{border-color:#c084fc;background:#fbf7ff}.lesson-btn.done{border-color:#86efac;background:#f0fdf4}
+.num{width:39px;height:39px;border-radius:14px;background:var(--lilac);display:grid;place-items:center;color:var(--purple);font-weight:1000}
+.lesson-btn.done .num{background:#dcfce7;color:#15803d}
+.lt{font-weight:1000;font-size:14.5px}.ls{font-size:12.5px;color:var(--muted)}.time{font-size:11.5px;color:var(--muted);font-weight:900;background:#f8f3ff;border:1px solid var(--line);border-radius:999px;padding:7px 8px}
+.lesson-view{background:white;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-height:540px}
+.lesson-head{background:linear-gradient(135deg,#7c3aed,#a855f7 45%,#ec4899);color:white;padding:28px}
+.lesson-head p{color:rgba(255,255,255,.86)}
+.lesson-body{padding:26px;display:grid;gap:16px}
+.box{border:1px solid var(--line);background:#fbf7ff;border-radius:22px;padding:18px;color:var(--muted);line-height:1.72}
+.box strong{color:var(--ink)}
+.pink{background:#fff1f8;border-color:#fbcfe8}.green{background:#f0fdf4;border-color:#bbf7d0}.danger{background:#fff1f2;border-color:#fecdd3}.amber{background:#fffbeb;border-color:#fde68a}
+.action{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid var(--line);padding-top:16px;flex-wrap:wrap}
+.complete{background:#16a34a;color:white;border-radius:18px;padding:14px 18px;font-weight:1000}
+.complete.done{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}
+.card{background:white;border:1px solid var(--line);border-radius:24px;padding:22px}
+.card h4{margin:0 0 8px;color:var(--purple);font-size:21px}.card p{color:var(--muted);margin:0}
+.tag{display:inline-flex;margin-top:13px;background:var(--rose);color:#be185d;padding:8px 10px;border-radius:999px;font-size:12px;font-weight:950}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:24px;background:white}
+table{width:100%;border-collapse:collapse;min-width:720px}
+th,td{padding:15px;text-align:left;border-bottom:1px solid #f1e7fb;vertical-align:top}
+th{background:#fbf7ff;color:var(--purple);text-transform:uppercase;font-size:12px;letter-spacing:.06em}
+td{color:var(--muted);line-height:1.55}
+td strong{color:var(--ink)}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+.flow-step{background:white;border:1px solid var(--line);border-radius:22px;padding:16px;text-align:center}
+.flow-step .ico{font-size:30px}.flow-step strong{display:block;margin:8px 0 4px}.flow-step span{font-size:12px;color:var(--muted)}
+.case{background:white;border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.case-head{padding:24px;background:linear-gradient(135deg,#faf5ff,#fff1f8);border-bottom:1px solid var(--line)}
+.case-head h4{font-size:24px;margin:0 0 8px}.case-head p{color:var(--muted);margin:0}
+.case-body{padding:22px;display:grid;gap:14px}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.case-section{border:1px solid var(--line);border-radius:20px;padding:16px;background:#fff}
+.case-section h5{font-size:16px;margin:0 0 8px;color:var(--purple)}.case-section ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.65}
+.doc{border:1px dashed #c084fc;border-radius:20px;background:white;padding:18px;color:#4b3a55;line-height:1.7}
+.doc h5{text-align:center;margin:0 0 12px;color:var(--ink)}.doc b{color:var(--purple)}
+.flash{min-height:230px;border-radius:28px;background:linear-gradient(135deg,#7c3aed,#ec4899);display:grid;place-items:center;text-align:center;color:white;padding:28px}
+.flash h4{font-size:28px;margin:8px 0}.flash p{color:rgba(255,255,255,.88);font-size:17px}
+.quiz-item{background:#fbf7ff;border:1px solid var(--line);border-radius:22px;padding:18px;margin-top:15px}
+.opts{display:grid;gap:9px}.opt{background:white;border:1px solid var(--line);border-radius:16px;padding:13px 14px;text-align:left;font-weight:850;color:var(--muted)}
+.opt.correct{background:#ecfdf5;border-color:#86efac;color:#166534}.opt.wrong{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.feedback{font-weight:900;font-size:13.5px;margin-top:10px}.ref{background:white;border:1px solid var(--line);border-radius:22px;padding:18px;color:var(--muted);line-height:1.7}.ref strong{color:var(--ink)}.ref a{color:var(--purple);font-weight:900;text-decoration:none}
+.final{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:22px;background:radial-gradient(circle at 20% 20%,rgba(249,168,212,.55),transparent 32%),radial-gradient(circle at 90% 10%,rgba(196,181,253,.6),transparent 32%),rgba(43,24,53,.72);backdrop-filter:blur(12px);overflow:hidden}
+.final.show{display:grid}.cert{position:relative;z-index:2;width:min(780px,100%);background:white;border-radius:36px;padding:38px;text-align:center;box-shadow:0 34px 85px rgba(0,0,0,.28);border:10px solid #fce7f3}.cert h2{color:var(--purple);font-size:clamp(34px,5vw,58px)}
+.confetti,.rocket{position:absolute;pointer-events:none}.confetti{width:10px;height:18px;top:-30px;border-radius:3px;animation:fall 3.6s linear infinite}@keyframes fall{to{transform:translateY(110vh) rotate(580deg)}}.rocket{bottom:-70px;font-size:36px;animation:up 2.4s ease-out forwards}@keyframes up{to{transform:translateY(-115vh) rotate(-12deg);opacity:0}}
+footer{background:#30163c;color:white}.foot{max-width:1220px;margin:auto;padding:34px 22px}.foot p{color:rgba(255,255,255,.72)}
+@media(max-width:950px){.start-card,.lesson-layout,.two,.three,.case-grid{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.right{min-height:auto}.top{flex-wrap:wrap}.nav{order:3;width:100%}}
+@media(max-width:600px){.start{padding:12px}.left,.right,.panel,.lesson-head,.lesson-body{padding:22px}.row input,.row button{width:100%;min-width:0}.lesson-btn{grid-template-columns:auto 1fr}.time{grid-column:1/-1;width:max-content}.flow{grid-template-columns:1fr}.doc-mascot{transform:scale(.86);margin-top:-15px;margin-bottom:-15px}}
+</style>
+</head>
+<body>
+<section id="start" class="start">
+<div class="blob b1"></div><div class="blob b2"></div>
+<div class="start-card">
+<div class="left">
+<span class="badge">📄 Aula guiada + estudos de caso + quiz</span>
+<h1>PsiDocumento</h1>
+<p class="lead">Oi! Eu sou a <strong>PsicoDocumento</strong>, uma folhinha de documento com lacinho. Hoje eu vou te ensinar, como uma professora, o que é um parecer psicológico, como ele é organizado e como pensar casos reais de forma ética.</p>
+<div class="row"><input id="studentName" placeholder="Digite seu nome para começar"><button class="btn primary" onclick="startCourse()">Começar aula</button></div>
+<p class="note">Fluxo da trilha: <strong>aulas → casos → quiz → final comemorativo</strong>.</p>
+
+</div>
+<div class="right">
+<div class="doc-mascot"><div class="bow"><i></i></div><div class="doc-eye l"></div><div class="doc-eye r"></div><div class="doc-cheek l"></div><div class="doc-cheek r"></div><div class="doc-mouth"></div><div class="doc-heart">♥</div><div class="doc-lines"><i></i><i></i><i></i></div></div>
+<div class="speech"><strong>Oi! Eu sou a PsicoDocumento.</strong><p class="lead">Eu vou te guiar com explicações simples, exemplos, tabelas e desenhos para você entender parecer sem ficar perdido.</p></div>
+<div class="authors">Projeto desenvolvido por:<br><strong>Lorena Soares, Luana Belache, Maria Clara Ferreira, Maria Eduarda Trevisan e Rafael Mariano.</strong></div>
+</div>
+</div>
+</section>
+
+<div id="app" class="app">
+<header><div class="top"><div class="brand"><div class="logo">📄</div><div>PsiDocumento<small>Trilha didática sobre Parecer Psicológico</small></div></div><nav class="nav"><button class="active" onclick="show('curso',this)">Aulas</button><button onclick="show('casos',this)">Casos</button><button onclick="show('flash',this)">Flashcards</button><button onclick="show('quiz',this)">Quiz</button><button onclick="show('refs',this)">Referências</button></nav><div class="user">👤 <strong id="topName">Estudante</strong></div></div></header>
+
+<main>
+<section id="curso" class="screen active">
+<div class="grid two">
+<div class="panel"><div class="mini"><div class="mini-doc"><div class="mini-bow"><i></i></div><em></em></div><div><strong>Olá, <span id="helloName">estudante</span>!</strong><p class="note">Eu sou a PsicoDocumento. Primeiro vamos aprender. Depois eu te levo para os casos e, em seguida, para o quiz.</p></div></div><div class="progress-block"><div class="phead"><span id="progressLabel">0% concluído</span><span id="progressMsg">Comece pela aula 1 🌱</span></div><div class="progress"><div id="bar"></div></div></div></div>
+<div class="panel"><span class="badge">🧭 Mapa da jornada</span><h2>Você vai aprender como uma professora explicaria.</h2><div class="flow"><div class="flow-step"><div class="ico">📌</div><strong>Conceito</strong><span>O que é</span></div><div class="flow-step"><div class="ico">🧩</div><strong>Diferença</strong><span>Documentos</span></div><div class="flow-step"><div class="ico">✍️</div><strong>Estrutura</strong><span>Como fazer</span></div><div class="flow-step"><div class="ico">🧠</div><strong>Casos</strong><span>Aplicar</span></div><div class="flow-step"><div class="ico">🚀</div><strong>Quiz</strong><span>Final</span></div></div></div>
+</div>
+<div class="lesson-layout"><div class="panel"><h3>Aulas guiadas</h3><p class="note">Clique, leia e conclua. No fim das aulas, você vai automaticamente para os casos.</p><div id="lessonList" class="lesson-list"></div></div><div id="lessonView" class="lesson-view"></div></div>
+</section>
+
+<section id="casos" class="screen">
+<div class="panel"><span class="badge">🎓 Hora de aplicar</span><h2>Estudos de caso: agora a professora PsicoDocumento quer ver seu raciocínio</h2><p class="lead">Os casos são fictícios, mas imitam dilemas reais de documentos psicológicos. Observe sempre: demanda, dados, limites, cuidado ético e conclusão proporcional.</p></div>
+<div class="grid" style="margin-top:20px">
+<div class="case">
+<div class="case-head"><h4>Caso 1 — Rafael e a cirurgia bariátrica “por fora”</h4><p>Rafael está em preparo para cirurgia bariátrica. A equipe pede manifestação psicológica. Com medo de perder a data da cirurgia, ele diz que pagaria por fora para receber documento favorável mais rápido.</p></div>
+<div class="case-body"><div class="case-grid"><div class="case-section"><h5>Demanda</h5><ul><li>Identificar fatores psicológicos relevantes para preparo pré-operatório.</li><li>Contribuir com a equipe multiprofissional.</li></ul></div><div class="case-section"><h5>Dilema</h5><ul><li>Pagamento não compra conclusão.</li><li>Documento não é carimbo de liberação.</li><li>Dados incompletos exigem limite técnico.</li></ul></div></div><div class="doc"><h5>Trecho-modelo</h5><p><b>Análise:</b> Rafael demonstra motivação, porém relata ansiedade elevada e comer emocional diante de estressores. Com dados multiprofissionais incompletos, não é adequado emitir conclusão definitiva.</p><p><b>Conclusão:</b> recomenda-se continuidade da avaliação psicológica, articulação com a equipe e acompanhamento voltado à adesão, expectativas pós-operatórias e rede de apoio.</p></div></div>
+</div>
+<div class="case">
+<div class="case-head"><h4>Caso 2 — Lorena em concurso policial</h4><p>Lorena foi considerada inapta em avaliação psicológica de concurso policial e solicita parecer para contestar a banca.</p></div>
+<div class="case-body"><div class="case-grid"><div class="case-section"><h5>Demanda</h5><ul><li>Analisar coerência documental do resultado.</li><li>Verificar se há elementos para questionamento técnico.</li></ul></div><div class="case-section"><h5>Dilema</h5><ul><li>Sem dados completos, não se afirma erro definitivo.</li><li>Instrumentos psicológicos têm sigilo.</li><li>Parecer não refaz avaliação sem processo adequado.</li></ul></div></div><div class="doc"><h5>Trecho-modelo</h5><p><b>Análise:</b> A documentação permite observar a conclusão final, mas não apresenta integralmente procedimentos e critérios interpretativos utilizados pela banca.</p><p><b>Conclusão:</b> com os documentos disponíveis, não é possível afirmar erro técnico definitivo. Recomenda-se análise complementar com acesso formal às informações permitidas pelo certame.</p></div></div>
+</div>
+<div class="case">
+<div class="case-head"><h4>Caso 3 — Maria Clara em processo judicial de guarda</h4><p>Maria Clara acompanha uma mãe em separação litigiosa. A cliente pede parecer afirmando que o pai não tem condições psicológicas de conviver com a criança.</p></div>
+<div class="case-body"><div class="case-grid"><div class="case-section"><h5>Demanda</h5><ul><li>Manifestar-se sobre elementos observados no acompanhamento.</li><li>Indicar limites dos dados disponíveis.</li></ul></div><div class="case-section"><h5>Dilema</h5><ul><li>Relato unilateral não vira verdade técnica.</li><li>Parecer não deve ser arma judicial.</li><li>Melhor interesse da criança é central.</li></ul></div></div><div class="doc"><h5>Trecho-modelo</h5><p><b>Análise:</b> Os dados decorrem do acompanhamento de apenas uma das partes e não sustentam conclusão ampla sobre capacidade parental do outro responsável.</p><p><b>Conclusão:</b> recomenda-se avaliação psicológica/pericial específica, com escuta ampliada e atenção à proteção dos vínculos da criança.</p></div></div>
+</div>
+<div class="case">
+<div class="case-head"><h4>Caso 4 — Luana no recrutamento</h4><p>Luana atua em seleção. A empresa pede parecer dizendo que uma candidata não tem estabilidade emocional para liderança, com base em uma entrevista sob pressão.</p></div>
+<div class="case-body"><div class="case-grid"><div class="case-section"><h5>Demanda</h5><ul><li>Relacionar competências observáveis aos requisitos do cargo.</li><li>Registrar limites do processo seletivo.</li></ul></div><div class="case-section"><h5>Dilema</h5><ul><li>Entrevista não autoriza diagnóstico.</li><li>Evitar termos clínicos sem avaliação apropriada.</li><li>Focar comportamento e critério do cargo.</li></ul></div></div><div class="doc"><h5>Trecho-modelo</h5><p><b>Análise:</b> Observou-se dificuldade de organização de respostas sob pressão e comunicação pouco objetiva em conflito simulado. Isso descreve desempenho no processo, não diagnóstico emocional.</p><p><b>Conclusão:</b> recomenda-se considerar a compatibilidade entre comportamentos observados e competências requeridas, evitando inferências clínicas amplas.</p></div></div>
+</div>
+<div class="case">
+<div class="case-head"><h4>Caso 5 — Maria Eduarda na UBS</h4><p>Maria Eduarda atua em UBS. A equipe acompanha adolescente em vulnerabilidade, evasão escolar e suspeita de violência intrafamiliar. O Conselho Tutelar solicita parecer para orientar a rede.</p></div>
+<div class="case-body"><div class="case-grid"><div class="case-section"><h5>Demanda</h5><ul><li>Apontar necessidades psicossociais observadas.</li><li>Subsidiar encaminhamentos de cuidado e proteção.</li></ul></div><div class="case-section"><h5>Dilema</h5><ul><li>Não afirmar violência sem apuração.</li><li>Diferenciar fato, relato e hipótese técnica.</li><li>Proteger sigilo sem impedir cuidado.</li></ul></div></div><div class="doc"><h5>Trecho-modelo</h5><p><b>Análise:</b> Observam-se sinais de sofrimento emocional, redução de frequência escolar e fragilização da rede de apoio. As informações indicam necessidade de avaliação ampliada pela rede.</p><p><b>Conclusão:</b> recomenda-se articulação entre UBS, escola, assistência social e Conselho Tutelar, visando proteção, continuidade do cuidado e escuta qualificada.</p></div></div>
+</div>
+</div>
+<div class="panel" style="margin-top:20px"><div class="mini"><div class="mini-doc"><div class="mini-bow"><i></i></div><em></em></div><div><strong>Próximo passo</strong><p class="note">Quando terminar de ler os casos, clique abaixo para ir ao quiz final.</p><button class="btn primary" onclick="document.querySelector('.nav button:nth-child(4)').click()">Ir para o quiz final 🚀</button></div></div></div>
+</section>
+
+<section id="flash" class="screen"><div class="panel"><span class="badge">🧠 Flashcards</span><h2>Revise rapidinho antes do quiz</h2><div class="grid two"><div><div id="flashCard" class="flash" onclick="flipFlash()"></div><button class="btn primary" style="margin-top:14px" onclick="nextFlash()">Próximo</button></div><div class="mini"><div class="mini-doc"><div class="mini-bow"><i></i></div><em></em></div><div><strong>Dica:</strong><p class="note">Se você entende demanda, finalidade, análise e conclusão, já está pronta(o) para o quiz.</p></div></div></div></div></section>
+
+<section id="quiz" class="screen"><div class="panel"><span class="badge">🚀 Quiz final</span><h2>Meta: acertar 5 de 6</h2><p class="lead">Ao acertar 5 questões, a PsicoDocumento libera os foguetes rosas.</p><div class="card"><h4>Pontuação</h4><p><strong id="score">0/6</strong> acertos</p><span class="tag" id="status">Responda às questões</span></div><div id="quizBox"></div></div></section>
+
+<section id="refs" class="screen"><div class="panel"><span class="badge">📚 Referências</span><h2>Base técnica e normativa</h2><p class="lead">O conteúdo tem finalidade acadêmica e educativa. A elaboração real de documentos psicológicos exige leitura integral das normas, competência técnica e responsabilidade profissional.</p><div class="grid"><div class="ref"><strong>CONSELHO FEDERAL DE PSICOLOGIA.</strong> Resolução CFP nº 06/2019. Institui regras para elaboração de documentos escritos produzidos pela psicóloga e pelo psicólogo. <a href="https://site.cfp.org.br/wp-content/uploads/2019/09/Resolu%C3%A7%C3%A3o-CFP-n-06-2019-comentada.pdf" target="_blank">Acessar</a></div><div class="ref"><strong>CONSELHO FEDERAL DE PSICOLOGIA.</strong> Código de Ética Profissional do Psicólogo. <a href="https://site.cfp.org.br/wp-content/uploads/2012/07/codigo-de-etica-psicologia.pdf" target="_blank">Acessar</a></div><div class="ref"><strong>CONSELHO FEDERAL DE PSICOLOGIA.</strong> Manual Orientativo de Registro e Elaboração de Documentos Psicológicos. <a href="https://site.cfp.org.br/publicacao/manual-orientativo-de-registro-e-elaboracao-de-documentos-psicologicos/" target="_blank">Acessar</a></div><div class="ref"><strong>CONSELHO FEDERAL DE PSICOLOGIA.</strong> Avaliação psicológica: cirurgia bariátrica e de readequação genital. <a href="https://site.cfp.org.br/avaliacao-psicologica-cirurgia-bariatrica-e-de-readequacao-genital/" target="_blank">Acessar</a></div></div></div></section>
+</main>
+<footer><div class="foot"><strong>PsiDocumento — Plataforma educacional sobre Parecer Psicológico</strong><p>Projeto desenvolvido por Lorena Soares, Luana Belache, Maria Clara Ferreira, Maria Eduarda Trevisan e Rafael Mariano.</p></div></footer>
+</div>
+
+<div id="final" class="final"><div class="cert"><div class="doc-mascot" style="transform:scale(.48);margin-top:-82px;margin-bottom:-78px"><div class="bow"><i></i></div><div class="doc-eye l"></div><div class="doc-eye r"></div><div class="doc-cheek l"></div><div class="doc-cheek r"></div><div class="doc-mouth"></div><div class="doc-heart">♥</div><div class="doc-lines"><i></i><i></i><i></i></div></div><h2>Uhul, <span id="certName">estudante</span>!</h2><p><strong>Você acertou 5 ou mais questões.</strong></p><p>A PsicoDocumento está muito feliz: você já sabe pensar um parecer psicológico com mais ética, técnica e cuidado.</p><button class="btn primary" onclick="closeFinal()">Continuar revisando</button></div></div>
+
+<script>
+const lessons=[
+{t:"Aula 1 — O que é parecer?",s:"A resposta técnica a uma pergunta.",m:"6 min",c:"Parecer psicológico é uma manifestação técnica, por escrito, que responde a uma questão-problema do campo psicológico. Ele não é opinião pessoal e também não serve para confirmar automaticamente o desejo de quem solicitou.",e:"Exemplo: a equipe pergunta se há fatores emocionais importantes antes de uma cirurgia. O parecer responde essa pergunta com base nos dados, sem decidir sozinho pela equipe."},
+{t:"Aula 2 — Documento certo",s:"Parecer, laudo, relatório e declaração.",m:"7 min",c:"Cada documento tem uma finalidade. A declaração informa fato simples; o relatório descreve acompanhamento; o laudo comunica avaliação psicológica; o parecer responde tecnicamente a uma pergunta delimitada.",e:"Se houve avaliação psicológica completa com instrumentos, pode ser laudo. Se a pergunta é técnica e delimitada, pode ser parecer."},
+{t:"Aula 3 — Estrutura do parecer",s:"Como organizar.",m:"8 min",c:"Uma forma didática de organizar é: identificação, descrição da demanda, procedimentos ou fontes de informação, análise psicológica, conclusão e referências.",e:"A conclusão precisa conversar com a demanda. Se a demanda é sobre preparo para cirurgia, a conclusão não deve virar julgamento moral sobre a pessoa."},
+{t:"Aula 4 — Análise psicológica",s:"O coração do documento.",m:"8 min",c:"A análise articula dados, contexto, escuta, documentos, teoria e limites. Ela mostra o raciocínio técnico e evita rótulos como ‘sem emocional’, ‘problemática’ ou ‘manipulador’.",e:"Troque ‘Rafael é instável’ por ‘observam-se sinais de ansiedade que demandam acompanhamento e avaliação complementar’."},
+{t:"Aula 5 — Ética e sigilo",s:"O que não pode faltar.",m:"7 min",c:"A escrita deve respeitar sigilo, finalidade, direitos humanos, dignidade, qualidade técnica e limites da atuação. Nem tudo que a psicóloga sabe precisa entrar no documento.",e:"Em caso judicial, não se escreve tudo que a cliente contou. Escreve-se apenas o necessário para a finalidade técnica."},
+{t:"Aula 6 — Checklist final",s:"Antes de entregar.",m:"5 min",c:"Revise: a demanda está clara? A análise tem base? A linguagem está respeitosa? A conclusão é proporcional? Os limites aparecem? As referências estão adequadas?",e:"A PsicoDocumento sempre pergunta: ‘eu consigo justificar tecnicamente cada frase que escrevi?’"}
+];
+const flash=[
+{f:"Parecer é opinião?",b:"Não. É manifestação técnica fundamentada para responder a uma demanda específica."},
+{f:"O que define o documento?",b:"A finalidade e a demanda apresentada."},
+{f:"Qual maior risco ético?",b:"Expor informações desnecessárias, aceitar pressão externa ou concluir além dos dados."},
+{f:"Conclusão boa faz o quê?",b:"Responde à demanda com base no que foi analisado e explicita limites quando necessário."}
+];
+const questions=[
+{q:"Rafael oferece pagar por fora para receber parecer favorável para cirurgia bariátrica. O mais adequado é:",o:["Emitir parecer favorável, pois ele pagou","Recusar a pressão, manter critério técnico e indicar continuidade da avaliação se os dados forem insuficientes","Escrever que ele está inapto automaticamente","Pedir que ele escolha o texto da conclusão"],a:1,f:"Pagamento não compra conclusão técnica."},
+{q:"No concurso policial de Lorena, o parecer independente não tem acesso aos dados completos da banca. A conclusão deve:",o:["Afirmar que a banca errou","Afirmar que Lorena está apta","Indicar os limites da análise e solicitar documentação adequada quando possível","Ignorar o edital"],a:2,f:"Sem dados completos, a conclusão deve ser limitada."},
+{q:"Em processo de guarda, Maria Clara acompanha apenas uma parte. O parecer pode afirmar que o outro responsável é incapaz?",o:["Sim, se a cliente pedir","Sim, se parecer convincente","Não; é necessário reconhecer limites e evitar conclusão sobre quem não foi avaliado","Sim, se houver conflito"],a:2,f:"Relato unilateral não sustenta conclusão ampla."},
+{q:"No recrutamento, Luana pode dizer que uma candidata “não tem estabilidade emocional” com base em uma entrevista?",o:["Sim, porque recrutadora pode tudo","Não; deve descrever comportamentos observáveis e critérios do cargo","Sim, se a empresa exigir","Só se usar palavras difíceis"],a:1,f:"Processo seletivo não autoriza diagnóstico informal."},
+{q:"Na UBS, Maria Eduarda suspeita de violência, mas não há confirmação. A escrita mais adequada é:",o:["Afirmar violência como fato","Ignorar o risco","Diferenciar suspeita, relato e dado observado, indicando articulação da rede de proteção","Culpar a família"],a:2,f:"Parecer em rede de proteção deve ser cuidadoso e não afirmar sem apuração."},
+{q:"O parecer psicológico serve principalmente para:",o:["Confirmar o desejo do solicitante","Responder tecnicamente uma demanda específica, dentro dos limites dos dados disponíveis","Substituir decisão médica, judicial ou institucional","Evitar fundamentação"],a:1,f:"Parecer subsidia, mas não decide sozinho."}
+];
+let selected=0,done=new Set(),answers={},flashIndex=0,back=false;
+function startCourse(){let v=studentName.value.trim();if(!v){studentName.focus();return}start.classList.add("hidden");app.style.display="block";topName.textContent=v;helloName.textContent=v;certName.textContent=v;renderLessons();openLesson(0);renderFlash();renderQuiz();updateProgress()}
+function show(id,btn){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");scrollTo({top:0,behavior:"smooth"})}
+function renderLessons(){lessonList.innerHTML=lessons.map((l,i)=>`<button class="lesson-btn ${selected===i?'active':''} ${done.has(i)?'done':''}" onclick="openLesson(${i})"><div class="num">${done.has(i)?'✓':i+1}</div><div><div class="lt">${l.t}</div><div class="ls">${l.s}</div></div><span class="time">${l.m}</span></button>`).join("")}
+function openLesson(i){selected=i;renderLessons();let l=lessons[i];lessonView.innerHTML=`<div class="lesson-head"><small>Aula ${i+1} de ${lessons.length}</small><h3>${l.t}</h3><p>${l.s}</p></div><div class="lesson-body"><div class="mini"><div class="mini-doc"><div class="mini-bow"><i></i></div><em></em></div><div><strong>PsicoDocumento explica:</strong><p class="note">Vou te ensinar como uma professora: primeiro conceito, depois exemplo, depois aplicação.</p></div></div><div class="box"><strong>Explicação:</strong><br>${l.c}</div><div class="table-wrap"><table><tr><th>Parte</th><th>Pergunta que ajuda</th></tr><tr><td><strong>Demanda</strong></td><td>O que estão pedindo para responder?</td></tr><tr><td><strong>Dados</strong></td><td>Quais informações realmente sustentam a análise?</td></tr><tr><td><strong>Limite</strong></td><td>O que não posso afirmar com esses dados?</td></tr><tr><td><strong>Conclusão</strong></td><td>Qual resposta técnica é proporcional?</td></tr></table></div><div class="box pink"><strong>Exemplo:</strong><br>${l.e}</div><div class="action"><span class="note">Conclua para avançar.</span><button class="complete ${done.has(i)?'done':''}" onclick="complete(${i})">${done.has(i)?'Concluída ✓':'Concluir aula'}</button></div></div>`}
+function complete(i){done.add(i);updateProgress();renderLessons();openLesson(i);if(done.size===lessons.length){setTimeout(()=>{document.querySelector('.nav button:nth-child(2)').click()},650)}else if(i<lessons.length-1){setTimeout(()=>openLesson(i+1),280)}}
+function updateProgress(){let p=Math.round(done.size/lessons.length*100);bar.style.width=p+"%";progressLabel.textContent=p+"% concluído";progressMsg.textContent=p===100?"Aulas concluídas! Indo para os casos 🎓":p>=50?"Você já passou da metade 🌸":p>0?"Continue, está indo bem 💜":"Comece pela aula 1 🌱"}
+function renderFlash(){let c=flash[flashIndex];flashCard.innerHTML=back?`<p>${c.b}</p>`:`<div><small style="font-weight:900;opacity:.8">Clique para virar</small><h4>${c.f}</h4></div>`}
+function flipFlash(){back=!back;renderFlash()}function nextFlash(){flashIndex=(flashIndex+1)%flash.length;back=false;renderFlash()}
+function renderQuiz(){quizBox.innerHTML=questions.map((q,i)=>`<div class="quiz-item"><h4>${i+1}. ${q.q}</h4><div class="opts">${q.o.map((op,j)=>{let cls="";if(answers[i]!==undefined){if(j===q.a)cls="correct";else if(j===answers[i])cls="wrong"}return `<button class="opt ${cls}" onclick="answer(${i},${j})">${op}</button>`}).join("")}</div>${answers[i]!==undefined?`<div class="feedback" style="color:${answers[i]===q.a?'var(--green)':'var(--red)'}">${answers[i]===q.a?'Correto!':'Revise.'} ${q.f}</div>`:""}</div>`).join("");scoreQuiz()}
+function answer(i,j){answers[i]=j;renderQuiz()}function scoreQuiz(){let s=questions.reduce((a,q,i)=>a+(answers[i]===q.a?1:0),0);score.textContent=s+"/6";status.textContent=s>=5?"Uhul! Foguetes liberados 🚀":"Meta: 5 acertos";if(Object.keys(answers).length===6&&s>=5)setTimeout(showFinal,350)}
+function showFinal(){final.classList.add("show");confetti();rockets()}function closeFinal(){final.classList.remove("show");document.querySelectorAll(".confetti,.rocket").forEach(e=>e.remove())}
+function confetti(){let colors=["#ec4899","#f9a8d4","#a855f7","#c4b5fd","#fff","#fde68a"];for(let i=0;i<110;i++){let c=document.createElement("div");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=colors[Math.floor(Math.random()*colors.length)];c.style.animationDelay=Math.random()*2.6+"s";c.style.animationDuration=(2.6+Math.random()*2.3)+"s";final.appendChild(c)}}
+function rockets(){for(let i=0;i<14;i++){let r=document.createElement("div");r.className="rocket";r.textContent="🚀";r.style.left=(6+Math.random()*88)+"vw";r.style.animationDelay=Math.random()*1.6+"s";final.appendChild(r)}}
+</script>
+</body>
+</html>
